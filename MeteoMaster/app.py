@@ -43,7 +43,11 @@ def new():
             return redirect(url_for('show_all'))
     return render_template('new.html')
 
-
+@app.route('/getDetails', methods=['GET', 'POST'])
+def getDetails():
+    if request.method == 'POST':
+        return render_template('show_one.html', students=students.query.filter_by(id = request.form['id']).all())
+    return render_template('gettingDetails.html')
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)
