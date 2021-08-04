@@ -36,7 +36,7 @@ def new():
         else:
             student = students(name=request.form['name'],city = request.form['city'],
                              addr = request.form['addr'],pin = request.form['pin'])
-
+            print(student)
             db.session.add(student)
             db.session.commit()
             flash('Record was successfully added')
